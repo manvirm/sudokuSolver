@@ -19,3 +19,24 @@ def is_valid_move(grid, row, col, number):
                 return False
 
     return True
+
+def solve(grid, row, col):
+    # Check if we reached end (sudoku solved)
+    if col = 9:
+        if row == 8:
+            return True
+        row += 1
+        col = 0
+
+    # Solve grid recursively
+    if grid[row][col] > 0:
+        return solve(grid, row, col + 1)
+
+    # Check all possibilities
+    for num in range(1, 10):
+
+        if is_valid_move(grid, row, col, num):
+            grid[row][col] = num
+
+            if solve(grid, row, col + 1):
+                return True
